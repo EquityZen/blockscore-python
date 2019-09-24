@@ -21,7 +21,7 @@ class BlockscoreError(Exception):
 
   def __str__(self):
     return "Status: {0}. Type: {1}, Message: {2}" \
-      .format(self.http_status, self.error_type, self.message)
+      .format(self.http_status, self.error_type, super(BlockscoreError, self).__str__())
 
 
 # Input could not be validated.
@@ -42,7 +42,7 @@ class ValidationError(BlockscoreError):
   def __str__(self):
     return "Status: {0}. Type: {1}, Param: {2}, Code: {3}, Message: {4}" \
       .format(self.http_status, self.error_type, self.param,
-          self.error_code, self.message)
+          self.error_code, super(ValidationError, self).__str__())
 
 
 # Required parameter missing
